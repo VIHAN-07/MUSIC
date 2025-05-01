@@ -36,3 +36,98 @@ int main() {
     while (1);
       
 }
+
+
+
+
+
+
+
+
+
+#include <xc.h>
+
+// Configuration bits (you should configure these based on your setup)
+#pragma config FOSC = HS        // High-Speed Oscillator
+#pragma config WDT = OFF        // Watchdog Timer disabled
+#pragma config LVP = OFF        // Low-Voltage Programming disabled
+
+#define _XTAL_FREQ 8000000     // Define your crystal frequency (adjust as needed)
+
+void main(void)
+{
+    TRISB = 0x00;               // Set PORTB as output
+    LATB = 0xFF;                // Set all PORTB pins high
+
+    while(1)
+    {
+        LATB = ~LATB;          // Toggle PORTB
+        __delay_ms(200);       // Built-in delay function
+    }
+}
+
+
+
+
+
+
+
+
+
+
+#include <pic18f4550.h>
+
+void delay(unsigned int time)
+{
+    unsigned int i, j;
+    for(i = 0; i < time; i++)
+        for(j = 0; j < 5000; j++);
+}
+
+void main(void)
+{
+    TRISB = 0x00;   // Set PORTB as output
+    LATB = 0x00;    // Turn all LEDs OFF
+
+    while(1)
+    {
+        unsigned char i;
+        for(i = 0; i < 8; i++)
+        {
+            LATB = 1 << i;   // Turn on one LED at a time
+            delay(500);       // Wait for each LED to blink (adjust delay as needed)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+#include <pic18f4550.h>
+
+void delay(unsigned int time)
+{
+    unsigned int i,j;
+    for(i=0;i<time;i++)
+        for(j=0;j<5000;j++);
+        
+}
+
+void main(void)
+{
+   TRISB = 0x00;
+   LATB = 0xFF;
+
+   while(1)                                //Loop forever;
+   {
+       LATB = ~LATB;
+       delay(200);
+   }
+}
+
+
