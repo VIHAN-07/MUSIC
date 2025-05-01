@@ -6,7 +6,7 @@ void initPWM(){
     TRISCbits.TRISC2=0;
    
     CCP1CON=0b00001100;
-    T2CON=0B000000011;
+    T2CON=0b000000011;
     PR2=61;
     CCPR1L=6;
     TMR2=0;
