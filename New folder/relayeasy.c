@@ -5,7 +5,7 @@ void __interrupt() isr() {
     if (INT1F) {
         INT1F = 0;
         RELAY ^= 1;
-        for (int i = 0; i < 10000; i++);
+        for (int i = 0; i < 1000; i++);
     }
 }
 
