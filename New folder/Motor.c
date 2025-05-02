@@ -12,7 +12,7 @@ void initPWM(){
     TMR2=0;
     T2CONbits.TMR2ON=1;
     PIR1bits.TMR2IF = 0;
-    while (!PIR1bits.TMR2IF);
+    while (PIR1bits.TMR2IF==0);
     
 }    
  
