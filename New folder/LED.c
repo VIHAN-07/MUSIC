@@ -22,15 +22,15 @@ void __interrupt() ISR(){
         TMR1L = 0x00;
         count++;
         if(count==100){
-            LATCbits.LATC1 = ~LATCbits.LATC1;  
+            LATB = ~LATB;  
             count=0;
         }    
     }    
 }
 
 int main() {
-    TRISCbits.TRISC1 = 0;    // Output pin
-    LATCbits.LATC1 = 0;
+    TRISB = 0x00;    // Output pin
+    LATO=0X00;
 
     inittimer1();
     while (1);
